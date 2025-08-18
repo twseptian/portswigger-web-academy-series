@@ -58,7 +58,7 @@ def exploit_sqli(url, payload, proxies=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SQL Injection exploitation tool")
     parser.add_argument("-u", "--url", help="Target URL (e.g., https://example.com)")
-    parser.add_argument("payload", help="SQL Injection payload (e.g., ' OR 1=1 --")
+    parser.add_argument("payload", help="SQL Injection payload (e.g., ' OR 1=1 --)")
     parser.add_argument("-p", "--proxy", help="Proxy URL (e.g., http://127.0.0.1:8080)", default=None)
 
     args = parser.parse_args()
