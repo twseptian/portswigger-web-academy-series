@@ -47,7 +47,7 @@ To solve the lab, log in as the  `administrator`  user.
 1.  Use Burp Suite to intercept and modify the request that sets the product category filter.
 2.  Determine the  [number of columns that are being returned by the query](https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns)  and  [which columns contain text data](https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text). Verify that the query is returning two columns, both of which contain text, using a payload like the following in the  `category`  parameter:
     
-    - `' ORDER BY 2--`
+    - `' ORDER BY 1--`
     - `' ORDER BY 2--`
 	- `' UNION SELECT 'test', 'test'--`
 	- `' UNION SELECT version(), NULL--`
