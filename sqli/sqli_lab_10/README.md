@@ -11,6 +11,7 @@ And you can list columns by querying `all_tab_columns`:
 `SELECT * FROM all_tab_columns WHERE table_name = 'USERS'`
 
 # Lab: SQL injection attack, listing the database contents on Oracle
+Link: https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle
 
 This lab contains an  [SQL injection](https://portswigger.net/web-security/sql-injection)  vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
 
