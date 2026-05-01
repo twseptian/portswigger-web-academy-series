@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import sys
 import requests
 import urllib.parse
@@ -59,7 +58,7 @@ def main():
         sys.exit(-1)
 
     url = sys.argv[1]
-    output.info("Checking if traing cookie is vulnerable to time-based blind SQLi")
+    output.info("Checking if training cookie is vulnerable to time-based blind SQLi")
     blind_sqli_check(url)
 
 if __name__ == "__main__":
