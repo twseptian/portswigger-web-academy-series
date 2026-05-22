@@ -34,3 +34,5 @@ To solve the lab, exploit the SQL injection vulnerability to cause a DNS lookup 
 3. Right-click and select "Insert Collaborator payload" to insert a Burp Collaborator subdomain where indicated in the modified TrackingId cookie.
 
 The solution described here is sufficient simply to trigger a DNS lookup and so solve the lab. In a real-world situation, you would use Burp Collaborator to verify that your payload had indeed triggered a DNS lookup and potentially exploit this behavior to exfiltrate sensitive data from the application. We'll go over this technique in the next lab.
+
+> Note: How to solve this challenge is just send the response to the burp collaborator
